@@ -22,12 +22,10 @@ manifest:
     - name: zmk-rgbled-widget
       remote: caksoylar
       revision: main
-<<<<<<< HEAD
     - name: prospector-zmk-module
       remote: prospector
       revision: v2.0.0
       path: modules/prospector-zmk-module
-=======
     # ZMK modules
     - name: zmk-adaptive-key
       remote: urob
@@ -48,6 +46,5 @@ manifest:
       remote: urob
       revision: main
 
->>>>>>> main
   self:
     path: config
