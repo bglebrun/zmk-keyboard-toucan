@@ -4,8 +4,6 @@ manifest:
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
-    - name: petejohanson
-      url-base: https://github.com/petejohanson/
     - name: caksoylar
       url-base: https://github.com/caksoylar
     - name: geeksville
@@ -22,8 +20,25 @@ manifest:
     - name: zmk-rgbled-widget
       remote: caksoylar
       revision: main
+    # ZMK modules
+    - name: zmk-adaptive-key
+      remote: urob
+      revision: main
+    - name: zmk-auto-layer
+      remote: urob
+      revision: main
     - name: zmk-helpers
       remote: urob
-      revision: v0.3
+      revision: main
+    - name: zmk-leader-key
+      remote: urob
+      revision: main
+    - name: zmk-tri-state
+      remote: urob
+      revision: main
+    - name: zmk-unicode
+      remote: urob
+      revision: main
+
   self:
     path: config
