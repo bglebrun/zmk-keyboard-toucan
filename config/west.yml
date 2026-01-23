@@ -4,14 +4,14 @@ manifest:
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
-    - name: petejohanson
-      url-base: https://github.com/petejohanson/
     - name: caksoylar
       url-base: https://github.com/caksoylar
     - name: prospector
       url-base: https://github.com/t-ogura
     - name: geeksville
       url-base: https://github.com/geeksville
+    - name: urob
+      url-base: https://github.com/urob
   projects:
     - name: zmk
       remote: zmkfirmware
@@ -22,9 +22,32 @@ manifest:
     - name: zmk-rgbled-widget
       remote: caksoylar
       revision: main
+<<<<<<< HEAD
     - name: prospector-zmk-module
       remote: prospector
       revision: v2.0.0
       path: modules/prospector-zmk-module
+=======
+    # ZMK modules
+    - name: zmk-adaptive-key
+      remote: urob
+      revision: main
+    - name: zmk-auto-layer
+      remote: urob
+      revision: main
+    - name: zmk-helpers
+      remote: urob
+      revision: main
+    - name: zmk-leader-key
+      remote: urob
+      revision: main
+    - name: zmk-tri-state
+      remote: urob
+      revision: main
+    - name: zmk-unicode
+      remote: urob
+      revision: main
+
+>>>>>>> main
   self:
     path: config
