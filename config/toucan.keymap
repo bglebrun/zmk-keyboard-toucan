@@ -10,6 +10,7 @@
 #define NAV  1
 #define SYM  2
 #define ADJ  3
+#define QUICK_TAP_MS 200
 
 /* Magic-shift & auto-layers */
 
