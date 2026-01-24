@@ -34,6 +34,11 @@ ZMK_ADAPTIVE_KEY(
   /delete-property/ ignore-modifiers;
 };
 
+&sk {
+  release-after-ms = <900>;
+  quick-release;
+};
+
 / {
     conditional_layers {
         compatible = "zmk,conditional-layers";
