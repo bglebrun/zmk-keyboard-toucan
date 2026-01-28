@@ -10,6 +10,9 @@
 #define NAV  1
 #define SYM  2
 #define ADJ  3
+#define GAME 4
+#define INV  5
+
 #define QUICK_TAP_MS 175
 
 /* Magic-shift & auto-layers */
@@ -84,18 +87,30 @@ ZMK_ADAPTIVE_KEY(
         adj {
             display-name = "ADJ";
             bindings = <
-                &mo TAB   &trans &kp F7 &kp F8 &kp F9 &kp F12   &kp C_VOL_DN &kp C_MUTE  &kp C_VOL_UP &kp C_PREV &kp C_PP   &kp BSPC
+                &kp TAB   &to GAME  &kp F7 &kp F8 &kp F9 &kp F12   &kp C_VOL_DN &kp C_MUTE  &kp C_VOL_UP &kp C_PREV &kp C_PP   &kp BSPC
                 &kp LCTRL &trans &kp F4 &kp F5 &kp F6 &kp F11   &trans       &trans      &trans       &trans     &kp C_NEXT &trans
                 &bt LSHFT &trans &kp F1 &kp F2 &kp F3 &kp F10   &trans       &trans      &trans       &trans     &trans     &trans
                                    &kp LGUI &mo NAV &kp SPACE   &kp RET &mo 2 &kp RALT
             >;
         };
-        extra_1 {
-                status = "reserved";
-        };
 
-        extra_2 {
-                status = "reserved";
+        GAME {
+            display-name = "GAME";
+            bindings = <
+                &kp TAB   &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U  &kp I     &kp O   &kp P    &kp BSPC
+                &kp LCTRL &kp A &kp S &kp D &kp F &kp G   &kp H &kp J  &kp K     &kp L   &kp SEMI &kp SQT
+                &kp LALT &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M  &kp COMMA &kp DOT &kp FSLH &ESC
+                                &mo INV &kp LSHFT &kp SPACE   &kp RET &to BASE &kp RGUI
+            >;
+        };
+        INV {
+            display-name = "INV";
+            bindings = <
+                &kp N1    &kp N2 &kp N3 &trans &kp N4 &kp N5   &trans &trans &trans &trans &trans &trans
+                &kp I     &kp M  &trans &trans &trans &kp J    &trans &trans &trans &trans &trans &trans
+                &kp H     &kp N6 &kp N7 &kp N8 &kp N9 &kp N0   &trans &trans &trans &trans &trans &trans
+                                    &trans &trans &trans       &trans &to BASE &trans
+            >;
         };
 
         extra_3 {
