@@ -34,6 +34,8 @@
                 (zephyr.sdk-0_16.override { targets = [ "arm-zephyr-eabi" ]; })
 
                 pkgs.cmake
+                pkgs.cmake-language-server
+                pkgs.clang-tools
                 pkgs.dtc
                 pkgs.gcc
                 pkgs.ninja
@@ -54,6 +56,7 @@
             shellHook = ''
               export ZMK_BUILD_DIR=$(pwd)/.build;
               export ZMK_SRC_DIR=$(pwd)/zmk/app;
+              export SHELL=/run/current-system/sw/bin/bash
             '';
           };
         }

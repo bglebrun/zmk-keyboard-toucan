@@ -70,6 +70,25 @@ list:
 update:
     west update --fetch-opt=--filter=blob:none
 
+# generate compile_commands.json for clangd
+[script]
+compile-commands expr="all":
+    set -euo pipefail
+    target=$(just _parse_targets {{ expr }} | head -n1)
+    [[ -z $target ]] && echo "No matching targets found. Aborting..." >&2 && exit 1
+
+    IFS=, read -r board shield snippet artifact cmake_args <<< "$target"
+    artifact="${artifact:-${shield:+${shield// /+}-}${board}}"
+    build_dir="{{ build / '$artifact' }}"
+
+    echo "Generating compile_commands.json for $artifact..."
+    west build -s zmk/app -d "$build_dir" -b $board ${snippet:+-S "$snippet"} -- \
+        -DZMK_CONFIG="{{ config }}" -DZMK_EXTRA_MODULES="{{ boards }}" \
+        ${shield:+-DSHIELD="$shield"} ${cmake_args} -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+
+    ln -sf "$build_dir/compile_commands.json" "{{ justfile_directory() }}/compile_commands.json"
+    echo "Linked compile_commands.json to project root"
+
 # upgrade zephyr-sdk and python dependencies
 upgrade-sdk:
     nix flake update --flake .

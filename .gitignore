@@ -1,8 +1,12 @@
 .build
 .direnv/
+.zed/
 .west
+.cache/
 modules
 firmware
 zephyr
 zmk
 draw/base.yaml
+compile_commands.json
+.clangd
