@@ -1,6 +1,8 @@
 .build
 .direnv/
 .west
+.cache
+.zed
 modules
 firmware
 zephyr

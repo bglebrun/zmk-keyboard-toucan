@@ -10,6 +10,7 @@
 #define NAV  1
 #define SYM  2
 #define ADJ  3
+#define SCRN 4
 #define QUICK_TAP_MS 175
 
 /* Magic-shift & auto-layers */
@@ -39,6 +40,20 @@ ZMK_ADAPTIVE_KEY(
   quick-release;
 };
 
+// Screenshot: triggers LGUI+LSHFT+S then activates screenshot layer
+ZMK_MACRO(screenshot_enter,
+    wait-ms = <30>;
+    tap-ms = <30>;
+    bindings = <&kp LG(LS(S))>, <&tog SCRN>;
+)
+
+// Tap-dance: single tap = right click, double tap = middle click
+ZMK_TAP_DANCE(click_rm,
+    tapping-term-ms = <200>;
+    bindings = <&mkp RCLK>, <&mkp MCLK>;
+)
+
+
 / {
     conditional_layers {
         compatible = "zmk,conditional-layers";
@@ -66,7 +81,7 @@ ZMK_ADAPTIVE_KEY(
             bindings = <
                 &kp TAB     &kp N1          &kp N2       &kp N3       &kp N4       &kp N5         &kp N6   &kp N7   &kp N8   &kp N9    &kp N0 &kp BSPC
                 &bt BT_CLR  &bt BT_SEL 0    &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4   &kp LEFT &kp DOWN &kp UP   &kp RIGHT &trans &trans
-                &kp LSHFT   &studio_unlock  &mkp MB4     &mkp MB5     &mkp RCLK    &mkp MCLK      &kp HOME &kp PGDN &kp PGUP &kp END   &trans &kp DEL
+                &kp LSHFT   &studio_unlock  &mkp MB4     &mkp MB5     &click_rm    &screenshot_enter &kp HOME &kp PGDN &kp PGUP &kp END   &trans &kp DEL
                                                 &kp LGUI     &trans       &kp SPACE      &kp RET  &trans   &kp RALT
             >;
         };
@@ -90,8 +105,14 @@ ZMK_ADAPTIVE_KEY(
                                    &kp LGUI &mo NAV &kp SPACE   &kp RET &mo 2 &kp RALT
             >;
         };
-        extra_1 {
-                status = "reserved";
+        screenshot {
+            display-name = "SCRN";
+            bindings = <
+                &trans     &trans &trans &trans &trans &trans   &trans    &trans &trans &trans &trans &trans
+                &trans     &trans &trans &trans &trans &trans   &mkp LCLK &trans &trans &trans &trans &trans
+                &kp LSHFT  &trans &trans &trans &trans &trans   &trans    &trans &trans &trans &trans &trans
+                                    &trans &trans &kp SPACE   &mkp LCLK &trans &tog SCRN
+            >;
         };
 
         extra_2 {
