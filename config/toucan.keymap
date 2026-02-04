@@ -110,7 +110,7 @@ ZMK_TAP_DANCE(click_rm,
             bindings = <
                 &trans     &trans &trans &trans &trans &trans   &trans    &trans &trans &trans &trans &trans
                 &trans     &trans &trans &trans &trans &trans   &mkp LCLK &trans &trans &trans &trans &trans
-                &kp LSHFT  &trans &trans &trans &trans &trans   &trans    &trans &trans &trans &trans &trans
+                &kp LSHFT  &trans &trans &trans &trans &tog SCRN   &trans    &trans &trans &trans &trans &trans
                                     &trans &trans &kp SPACE   &mkp LCLK &trans &tog SCRN
             >;
         };
